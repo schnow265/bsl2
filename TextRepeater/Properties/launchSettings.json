@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TextRepeater": {
+      "commandName": "Project",
+      "commandLineArgs": "en 5"
+    }
+  }
+}

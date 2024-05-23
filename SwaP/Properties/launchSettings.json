@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SwaP": {
+      "commandName": "Project",
+      "commandLineArgs": "10 500"
+    }
+  }
+}
