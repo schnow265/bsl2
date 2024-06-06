@@ -2,6 +2,7 @@
 {
     internal class Program
     {
+        // The main. You know what Main is, right?!
         static void Main(string[] args)
         {
             PrintMenu();
@@ -28,8 +29,8 @@
                     Console.WriteLine();
                     Console.WriteLine();
                     Console.WriteLine();
-                    Console.WriteLine("Returning to the Menu in 2 seonds...");
-                    Thread.Sleep(2000);
+                    Console.WriteLine("Returning to the Menu in 10 seonds...");
+                    Thread.Sleep(10000);
                     PrintMenu();
                 }
 
@@ -38,11 +39,14 @@
         }
 
 
+        /*
+         * The menu. Not for eating.
+         */
         static void PrintMenu()
         {
             Console.Clear();
             Console.WriteLine("-----------------------------");
-            Console.WriteLine("| °       Drawer          ° |");
+            Console.WriteLine("|         Drawer            |");
             Console.WriteLine("-----------------------------");
             Console.WriteLine("| 1: Draw vertical Line     |");
             Console.WriteLine("| 2: Draw horizontal Line   |");
@@ -54,18 +58,31 @@
 
         internal static bool CheckLength(params int[] lengths)
         {
+            // getting max console buffer size
             int maxWidth = Console.BufferWidth;
             int maxHeight = Console.BufferHeight;
 
             bool status = false;
             bool length_warning = false;
 
+            // checking if length is -1. We will come back to this later.
             foreach (int length in lengths)
             {
-                if (length > maxWidth) { status = false; break; }
-                if (length > maxHeight) { status = false; break; }
+                if (length == -1)
+                {
+                    return false;
+                }
             }
 
+
+            // Verify that no length is bigger than the buffer size.
+            foreach (int length in lengths)
+            {
+                if (length > maxWidth) { return false; }
+                if (length > maxHeight) { return false; }
+            }
+
+            // warn the user that lengths are outside of the buffer, and therefore not printable.
             if (!status)
             {
                 Console.WriteLine("Some of your lengths are longer than the max buffer size!");
@@ -73,34 +90,48 @@
             }
             return true;
         }
+
+        internal static int CheckToInt(string intpls)
+        {
+            if (int.TryParse(intpls, out int arg1)) { //verify that the given number isn't a string.
+                return arg1;
+            }
+            else
+            {
+                Console.Error.WriteLine($"VALUE IS NOT A VALID INTEGER");
+                return -1; // Oh my god. It's -1.
+            }
+        }
     }
 
 
     internal class Drawing
     {
-        static char CHAR_TO_DRAW = '*';
+        // stars.
+        static char CHAR_VERT = '*';
+        static char CHAR_HORZ = '*';
 
-        // Draws a vertical line
+        // Draws a vertical line Out of stars.
         public static void DrawVLine(int top, int left, int height)
         {
             for (int i = 0; i < height; i++)
             {
                 Console.SetCursorPosition(left, top + i);
-                Console.Write(CHAR_TO_DRAW);
+                Console.Write(CHAR_VERT);
             }
         }
 
-        // Draws a horizontal line
+        // Draws a horizontal line. Out of stars.
         public static void DrawHLine(int top, int left, int width)
         {
             Console.SetCursorPosition(left, top);
             for (int i = 0; i < width; i++)
             {
-                Console.Write(CHAR_TO_DRAW);
+                Console.Write(CHAR_HORZ);
             }
         }
 
-        // Draws a rectangle
+        // Draws a rectangle. Out of lines. Out of stars.
         public static void DrawRectangle(int top, int left, int height, int width)
         {
             // Top horizontal line
@@ -116,7 +147,7 @@
             DrawVLine(top, left + width - 1, height);
         }
 
-        // Draws a grid
+        // Draws a grid. Out of Squares. Out of Lines. Out of Stars.
         public static void DrawGrid(int top, int left, int cellSize, int numberOfRows, int numberOfColumns)
         {
             for (int row = 0; row < numberOfRows; row++)
@@ -131,7 +162,7 @@
         }
     }
 
-    internal class Handlers
+    internal class Handlers // handlers which handle various handling jobs.
     {
         internal static bool HandleVerticalLine()
         {
@@ -140,13 +171,13 @@
             do
             {
                 Console.WriteLine("How much from the top?");
-                top = Convert.ToInt32(Console.ReadLine());
+                top = Program.CheckToInt(Console.ReadLine());
 
                 Console.WriteLine("How far from the left?");
-                left = Convert.ToInt32(Console.ReadLine());
+                left = Program.CheckToInt(Console.ReadLine());
 
                 Console.WriteLine("How tall?");
-                length = Convert.ToInt32(Console.ReadLine());
+                length = Program.CheckToInt(Console.ReadLine());
 
 
                 ready = Program.CheckLength(top, left, length);
@@ -154,9 +185,9 @@
 
             } while (!ready);
 
-            Console.Clear();
+            Console.Clear(); // clear the space
 
-            Drawing.DrawVLine(top, left, length);
+            Drawing.DrawVLine(top, left, length); // draw it
 
             return true;
         }
@@ -168,13 +199,13 @@
             do
             {
                 Console.WriteLine("How much from the top?");
-                top = Convert.ToInt32(Console.ReadLine());
+                top = Program.CheckToInt(Console.ReadLine());
 
                 Console.WriteLine("How far from the left?");
-                left = Convert.ToInt32(Console.ReadLine());
+                left = Program.CheckToInt(Console.ReadLine());
 
                 Console.WriteLine("How long?");
-                length = Convert.ToInt32(Console.ReadLine());
+                length = Program.CheckToInt(Console.ReadLine());
 
 
                 ready = Program.CheckLength(top, left, length);
@@ -182,9 +213,9 @@
 
             } while (!ready);
 
-            Console.Clear();
+            Console.Clear(); // clear the space
 
-            Drawing.DrawHLine(top, left, length);
+            Drawing.DrawHLine(top, left, length); // draw it
 
             return true;
         }
@@ -196,25 +227,25 @@
             do
             {
                 Console.WriteLine("How much from the top?");
-                top = Convert.ToInt32(Console.ReadLine());
+                top = Program.CheckToInt(Console.ReadLine());
 
                 Console.WriteLine("How far from the left?");
-                left = Convert.ToInt32(Console.ReadLine());
+                left = Program.CheckToInt(Console.ReadLine());
 
                 Console.WriteLine("How tall?");
-                height = Convert.ToInt32(Console.ReadLine());
+                height = Program.CheckToInt(Console.ReadLine());
 
                 Console.WriteLine("How much in width?");
-                width = Convert.ToInt32(Console.ReadLine());
+                width = Program.CheckToInt(Console.ReadLine());
 
                 ready = Program.CheckLength(top, left, height, width);
 
 
             } while (!ready);
 
-            Console.Clear();
+            Console.Clear(); // clear the space
 
-            Drawing.DrawRectangle(top,left,height,width);
+            Drawing.DrawRectangle(top,left,height,width); // draw it
 
             return true;
         }
@@ -226,28 +257,27 @@
             do
             {
                 Console.WriteLine("How much from the top?");
-                top = Convert.ToInt32(Console.ReadLine());
+                top = Program.CheckToInt(Console.ReadLine());
 
                 Console.WriteLine("How far from the left?");
-                left = Convert.ToInt32(Console.ReadLine());
+                left = Program.CheckToInt(Console.ReadLine());
 
                 Console.WriteLine("How many cells?");
-                cellSize = Convert.ToInt32(Console.ReadLine());
+                cellSize = Program.CheckToInt(Console.ReadLine());
 
                 Console.WriteLine("How many rows?");
-                numberOfows = Convert.ToInt32(Console.ReadLine());
+                numberOfows = Program.CheckToInt(Console.ReadLine());
 
                 Console.WriteLine("How many cols?");
-                numberOfCols = Convert.ToInt32(Console.ReadLine());
+                numberOfCols = Program.CheckToInt(Console.ReadLine());
 
                 ready = Program.CheckLength(top, left, cellSize, numberOfows, numberOfCols);
 
-
             } while (!ready);
 
-            Console.Clear();
+            Console.Clear(); // clear the space
 
-            Drawing.DrawGrid(top, left, cellSize, numberOfows, numberOfCols);
+            Drawing.DrawGrid(top, left, cellSize, numberOfows, numberOfCols); // draw it
 
             return true;
         }

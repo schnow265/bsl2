@@ -13,7 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrawCharacter", "DrawCharac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserInput", "TheCrappyMenuApp\UserInput.csproj", "{CF05AFB5-A580-4196-8A1F-246A74361918}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlledStaticMethods", "ControlledStaticMethods\ControlledStaticMethods.csproj", "{A2DBDA5E-C624-4B81-A010-65DEF0371A20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControlledStaticMethods", "ControlledStaticMethods\ControlledStaticMethods.csproj", "{A2DBDA5E-C624-4B81-A010-65DEF0371A20}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShittyThings", "ShittyThings\ShittyThings.csproj", "{15BDAA21-2879-4365-B709-066465D26D8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Array", "Array\Array.csproj", "{89EE6047-5F91-47CD-AA52-45855794DF17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArraysAndHeck", "ArraysAndHeck\ArraysAndHeck.csproj", "{CE1ED449-1349-4070-8078-E58B062AF1C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,18 @@ Global
 		{A2DBDA5E-C624-4B81-A010-65DEF0371A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2DBDA5E-C624-4B81-A010-65DEF0371A20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2DBDA5E-C624-4B81-A010-65DEF0371A20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15BDAA21-2879-4365-B709-066465D26D8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15BDAA21-2879-4365-B709-066465D26D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15BDAA21-2879-4365-B709-066465D26D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15BDAA21-2879-4365-B709-066465D26D8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89EE6047-5F91-47CD-AA52-45855794DF17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89EE6047-5F91-47CD-AA52-45855794DF17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89EE6047-5F91-47CD-AA52-45855794DF17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89EE6047-5F91-47CD-AA52-45855794DF17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE1ED449-1349-4070-8078-E58B062AF1C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE1ED449-1349-4070-8078-E58B062AF1C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE1ED449-1349-4070-8078-E58B062AF1C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE1ED449-1349-4070-8078-E58B062AF1C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
