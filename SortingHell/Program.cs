@@ -8,13 +8,25 @@ namespace SortingHell
         {
             Console.WriteLine("Welcome to sorting Hell!");
             Console.WriteLine("------------------------");
-            int[] arr = Utils.InitArray(10_000);
+
+            int aaa;
+            bool sizeDefined = false;
+
+            do
+            {
+                Console.WriteLine("How big should the Array be?");
+                aaa = Utils.CheckToInt(Console.ReadLine());
+
+                sizeDefined = Utils.CheckInts(aaa);
+            } while (!sizeDefined);
+
+            int[] arr = Utils.InitArray(aaa);
             Console.WriteLine("Initial Array has been created!");
 
-            Task task1 = Task.Run(() => Sorters.BuggleSort(arr));
-            Task task2 = Task.Run(() => Sorters.SelectionSort(arr));
-            Task task3 = Task.Run(() => Sorters.InsertionSort(arr));
-            Task task4 = Task.Run(() => Sorters.QuickSortLauncher(arr));
+            Task task1 = Task.Run(() => Sorters.BuggleSort(arr)); // launch BubbleSort in a new thread
+            Task task2 = Task.Run(() => Sorters.SelectionSort(arr)); // launch SelectionSort in a new Thread
+            Task task3 = Task.Run(() => Sorters.InsertionSort(arr)); // launch InsertionSort in a new Thread
+            Task task4 = Task.Run(() => Sorters.QuickSortLauncher(arr)); // launch the QuickSort Launcher in a new thread, to Launch Quicksort.
             
             // Wait for all tasks to complete
             Task.WaitAll(task1, task2, task3, task4);
@@ -26,8 +38,10 @@ namespace SortingHell
 
     internal class Sorters
     {
+        // Bubble Sort.
         internal static void BuggleSort(int[] input)
         {
+            // Did you know, that I often press 'g' instead of 'b'?
             int c = 0;
             int[] a = new int[input.Length];
             input.CopyTo(a, 0);
@@ -53,6 +67,7 @@ namespace SortingHell
             Console.WriteLine("BubbleSort has concluded! It took {0} and needed {1} tries.", sw.Elapsed, c);
         }
 
+        // Insertion Sort Algorythm.
         internal static void InsertionSort(int[] input)
         {
             int c = 0;
@@ -83,6 +98,7 @@ namespace SortingHell
             Console.WriteLine("InsertionSort has concluded! It took {0} and needed {1} tries", ts, c);
         }
 
+        // SelectionSort Algorythm
         internal static void SelectionSort(int[] input) {
             int c = 0;
             int[] a = new int[input.Length];
@@ -111,6 +127,7 @@ namespace SortingHell
             Console.WriteLine("SelectionSort has concluded! It took {0} and needed {1} tries", ts, c);
         }
 
+        // The QuickSort Algorythm
         static void QuickSort(int[] arr, int left, int right, ref int c) {
             int i = left;
             int j = right;
@@ -145,6 +162,7 @@ namespace SortingHell
                 QuickSort(arr, i, right, ref c);
             }
         }
+        // Launcher for QuickSort
         internal static void QuickSortLauncher(int[] input) {
             int c = 0;
             int[] a = new int[input.Length];
@@ -164,7 +182,7 @@ namespace SortingHell
 
     internal class Utils
     {
-        internal static int[] InitArray(int size)
+        internal static int[] InitArray(int size) // init the array
         {
             int[] arr = new int[size];
 
@@ -188,6 +206,33 @@ namespace SortingHell
             Console.Write("]");
 
             Console.WriteLine();
+        }
+
+
+        // of course I copy those two methods. I don't do anything else with those.
+        internal static int CheckToInt(string intpls) // well, look who's back.
+        {
+            if (int.TryParse(intpls, out int arg1))
+            { //verify that the given number isn't a string, again.
+                return arg1;
+            }
+            else
+            {
+                return -1; // Oh my god. It's -1, again.
+            }
+        }
+
+        internal static bool CheckInts(params int[] ints) // also back in use.
+        {
+            foreach (int length in ints)
+            {
+                if (length == -1)
+                {
+                    Console.Error.WriteLine($"VALUE IS NOT A VALID INTEGER");
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
