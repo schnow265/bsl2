@@ -2,15 +2,10 @@
 {
     internal class Program
     {
-        static void Masterin(string[] args)
+        static void Main(string[] args)
         {
             TestArray();
             
-        }
-
-        static void Master(string[] args)
-        {
-
         }
 
         static void Foo(int x) {
@@ -41,9 +36,6 @@
 
             Console.WriteLine(arr[2]);
         }
-
-
-
 
         static void TestArray2()
         {

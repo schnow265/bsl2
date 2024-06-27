@@ -64,7 +64,7 @@ namespace SortingHell
             }
             sw.Stop();
 
-            Console.WriteLine("BubbleSort has concluded! It took {0} and needed {1} tries.", sw.Elapsed, c);
+            Console.WriteLine("BubbleSort has concluded! It took {0} and needed {1} tries.", sw.Elapsed.Seconds, c);
         }
 
         // Insertion Sort Algorythm.
@@ -95,7 +95,7 @@ namespace SortingHell
 
             TimeSpan ts = sw.Elapsed;
 
-            Console.WriteLine("InsertionSort has concluded! It took {0} and needed {1} tries", ts, c);
+            Console.WriteLine("InsertionSort has concluded! It took {0} and needed {1} tries", ts.Seconds, c);
         }
 
         // SelectionSort Algorythm
@@ -124,7 +124,7 @@ namespace SortingHell
             }
             sw.Stop();
             TimeSpan ts = sw.Elapsed;
-            Console.WriteLine("SelectionSort has concluded! It took {0} and needed {1} tries", ts, c);
+            Console.WriteLine("SelectionSort has concluded! It took {0} and needed {1} tries", ts.Seconds, c);
         }
 
         // The QuickSort Algorythm

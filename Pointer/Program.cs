@@ -2,32 +2,40 @@
 {
     internal class Program
     {
-        static unsafe void Main(string[] args)
+        static void Swap(ref int x, ref int y)
         {
-            int x = 10;
-            int* p = &x;
-
-            Console.WriteLine($"x={x}");
-            Console.WriteLine("p={0:X}", (long) p);
-            
-            int** p2 = &p;
-
-            Console.WriteLine("p2={0:X}",(long) p2);
-
-
-            int* p3 = Foo();
-            Console.WriteLine(*p3);
-
-            Thread.Sleep(1000);
-
-            Console.WriteLine("p3={0:X}", (long) p3);
-            Console.WriteLine(*p3);
+            int h = x;
+            x = y;
+            y = h;
         }
 
-        static unsafe int* Foo()
+        static unsafe void UnsafeSwap (int* x, int* y)
         {
-            int x = 5;
-            return &x;
+            int h = *x;
+
+            *x = *y;
+            *y = h;
+        }
+
+        static unsafe void Main(string[] args)
+        {
+            //int x = 10;
+            //int* p = &x;
+
+            //Console.WriteLine($"x={x}");
+            //Console.WriteLine("p={0:X}", (long) p);
+            
+            //int** p2 = &p;
+
+            //Console.WriteLine("p2={0:X}",(long) p2);
+
+            int y = 5;
+            int z = 10;
+
+            UnsafeSwap(&y, &z);
+            
+            Console.WriteLine(y);
+            Console.WriteLine(z);
         }
     }
 }
