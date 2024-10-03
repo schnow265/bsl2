@@ -46,13 +46,6 @@
   <ItemGroup>
     <Compile Include="BS2Command.cs" />
     <Compile Include="BS2NotifyPropertyBase.cs" />
-    <Compile Include="Converter\AutoHeightConverter.cs" />
-    <Compile Include="Converter\InvBoolConverter.cs" />
-    <Compile Include="Converter\InvVisibilityConverter.cs" />
-    <Compile Include="Converter\IsNotNullVisibilityConverter.cs" />
-    <Compile Include="Converter\IsNullVisibilityConverter.cs" />
-    <Compile Include="Converter\RequiredConverter.cs" />
-    <Compile Include="Converter\VisibilityConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
