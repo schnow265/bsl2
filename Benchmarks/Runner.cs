@@ -1,17 +1,16 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
-using System.Security.Cryptography;
-using snowMarks.Benchmarks;
 using Benchmarks.Benchmarks;
 
-namespace snowMarks
+namespace Benchmarks
 {
     public static class Runner
     {
         public static void Main(string[] args)
         {
-            //BenchmarkRunner.Run<Md5VsSha256>();
-            BenchmarkRunner.Run<PasswordBenchmarks>();
+            BenchmarkRunner.Run<RegexHell>();
+            BenchmarkRunner.Run<Md5VsSha256>();
+            //BenchmarkRunner.Run<PasswordBenchmarks>();
         }
     }
 }

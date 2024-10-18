@@ -6,8 +6,10 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace snowMarks.Benchmarks
+namespace Benchmarks.Benchmarks
 {
+    [RPlotExporter]
+    [MemoryDiagnoser]
     public class Md5VsSha256
     {
         private const int N = 10000;
